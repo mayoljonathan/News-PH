@@ -1,0 +1,31 @@
+@import '../../../sass/_variables.scss';
+
+mat-card{
+    padding: 0 !important;
+}
+
+.news-card{
+    display: block;
+}
+.news-card:not(:first-child){
+    border-top: 1px solid $divider-color;
+}
+
+.refresh{
+    position: absolute;
+    right: 0;
+    margin: 0 16px;
+    background-color: transparent;
+}
+
+.spinner-container{
+    display: flex;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+}
+
+// Temporary, change color for the spinner
+/deep/ .mat-progress-spinner circle, /deep/ .mat-spinner circle {
+    stroke: $primary-color;
+}

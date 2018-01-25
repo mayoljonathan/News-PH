@@ -1,0 +1,31 @@
+<mat-toolbar class="toolbar">
+  <img src="./assets/images/philippines-flag.jpg" alt="" class="news-ph-logo">
+  <div class="news-ph-text">News PH</div> 
+
+  <button mat-icon-button (click)="refresh()" class="refresh" matTooltip="Refresh">
+    <mat-icon aria-label="Refresh news">refresh</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="spinner-container" *ngIf="newsList.length==0 else showNews">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+  <ng-template #showNews>
+    <mat-card>
+      <news-card *ngFor="let news of newsList" [news]="news" class="news-card"></news-card>
+    </mat-card>
+  </ng-template>
+
+  <div class="footer">
+    <span>Powered by <a href="https://newsapi.org/" target="_blank">News API</a></span>
+    <div style="margin-top:16px;">
+      <div>
+        <img src="https://assets-cdn.github.com/favicon.ico" alt="" width="32px" height="32px">
+      </div>
+      <a href="https://github.com/mayoljonathan/News-PH" target="_blank">Fork me on GitHub.</a>
+    </div>
+  </div>
+
+</div>

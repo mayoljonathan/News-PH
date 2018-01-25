@@ -1,0 +1,11 @@
+<div class="news-card-container">
+    <div class="news-image" [style.background-image]="'url('+news.urlToImage+')'" (click)="launchExternal(news.url)"></div>
+
+    <div class="news-details-container">
+        <div class="news-title" (click)="launchExternal(news.url)">
+            <div class="text">{{news.title}}</div>
+        </div>
+        <div class="news-author">by {{news.author ? news.author : 'Unknown'}} - {{news.publishedAt | toDateAndTime}}</div>
+        <div class="news-description">{{news.description}}</div>
+    </div>
+</div>

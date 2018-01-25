@@ -1,0 +1,51 @@
+// https://stories.justinewin.com/my-8-tips-tricks-in-ui-development-aefc5b89f469
+
+.news-card-container{
+    display: flex;
+    flex-wrap:wrap;
+    
+    .news-image{
+        flex-grow: 1;
+        width: 250px;
+        min-height: 200px;
+        background-size: cover;
+        background-position: 50% 50%;
+        transition: all .2s ease-in-out;
+
+        &:hover{
+            filter: blur(1px);
+            cursor: pointer;
+        }
+    }
+
+    .news-details-container{
+        flex-basis: 60%;
+        flex-grow: 1;
+        
+        .news-title{
+            background-color: #212121;
+            opacity: 0.8;
+            padding: 12px;
+
+            &:hover{
+                cursor: pointer;
+            }
+            
+            .text{
+                // font-size:calc(0.5em + 1vw);
+                font-size: 20px;
+                color: #FFFFFF;
+            }
+        }
+
+        .news-author{
+            margin: 12px;
+            font-size: 13px;
+            font-style: italic;
+        }
+        .news-description{
+            margin: 0px 12px 12px 12px;
+        }
+    }
+    
+}
