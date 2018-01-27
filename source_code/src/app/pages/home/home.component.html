@@ -1,31 +1,47 @@
 <mat-toolbar class="toolbar">
+  <button mat-icon-button (click)="menuOpen = !menuOpen" class="menu">
+    <mat-icon aria-label="Menu">menu</mat-icon>
+  </button>
+
   <img src="./assets/images/philippines-flag.jpg" alt="" class="news-ph-logo">
   <div class="news-ph-text">News PH</div> 
 
-  <button mat-icon-button (click)="refresh()" class="refresh" matTooltip="Refresh">
+  <button mat-icon-button (click)="getNews(selectedCategory)" class="refresh" matTooltip="Refresh">
     <mat-icon aria-label="Refresh news">refresh</mat-icon>
   </button>
 </mat-toolbar>
 
-<div class="container">
-  <div class="spinner-container" *ngIf="newsList.length==0 else showNews">
-    <mat-spinner diameter="50"></mat-spinner>
-  </div>
+<mat-sidenav-container>
+  <!-- Sidenav -->
+  <mat-sidenav mode="side" [opened]="menuOpen">
+    <button *ngFor="let category of categories" class="category" [class.category-selected]="selectedCategory == category.name" mat-button (click)="getNews(category.name)">{{category.name | uppercase }}</button>
+  </mat-sidenav>
 
-  <ng-template #showNews>
-    <mat-card>
-      <news-card *ngFor="let news of newsList" [news]="news" class="news-card"></news-card>
-    </mat-card>
-  </ng-template>
-
-  <div class="footer">
-    <span>Powered by <a href="https://newsapi.org/" target="_blank">News API</a></span>
-    <div style="margin-top:16px;">
-      <div>
-        <img src="https://assets-cdn.github.com/favicon.ico" alt="" width="32px" height="32px">
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <div class="container">
+      <div class="spinner-container" *ngIf="isLoading else showNews">
+        <mat-spinner diameter="50"></mat-spinner>
       </div>
-      <a href="https://github.com/mayoljonathan/News-PH" target="_blank">Fork me on GitHub.</a>
+      
+      <ng-template #showNews>
+        <mat-card>
+          <news-card *ngFor="let news of newsList" [news]="news" class="news-card"></news-card>
+        </mat-card>
+      </ng-template>
+      
+      <div class="footer">
+        <span>Powered by <a href="https://newsapi.org/" target="_blank">News API</a></span>
+        <div style="margin-top:16px;">
+          <div>
+            <img src="https://assets-cdn.github.com/favicon.ico" alt="" width="32px" height="32px">
+          </div>
+          <a href="https://github.com/mayoljonathan/News-PH" target="_blank">Fork me on GitHub.</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>
 
-</div>
+  

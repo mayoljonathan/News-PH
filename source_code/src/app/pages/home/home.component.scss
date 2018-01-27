@@ -11,6 +11,17 @@ mat-card{
     border-top: 1px solid $divider-color;
 }
 
+.news-ph-logo{
+    width: 32px;
+    height: 32px;
+}
+.news-ph-text{
+    margin: 8px;
+}
+
+.menu{
+    margin-right: 5px;
+}
 .refresh{
     position: absolute;
     right: 0;
@@ -23,6 +34,14 @@ mat-card{
     height: 400px;
     align-items: center;
     justify-content: center;
+}
+
+.category{
+    width: 100%;
+    text-align: left;
+}
+.category-selected{
+    background-color: #E0E0E0;
 }
 
 // Temporary, change color for the spinner

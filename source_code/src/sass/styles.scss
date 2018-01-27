@@ -10,32 +10,42 @@
 html, body{
     margin: 0;
     padding: 0;
+    background-color: #FAFAFA;
 }
 
 .toolbar{
     background-color: $primary-color-dark;
     color: $primary-color-text;
     font-size: 20px;
+    position: fixed; // stick it to the top
+    top: 0;
+    z-index: 2;
 }
 
-.news-ph-logo{
-    width: 32px;
-    height: 32px;
-}
-.news-ph-text{
-    margin-left: 8px;
+mat-sidenav-container{
+    margin-top: 64px;
+    
+    mat-sidenav{
+        width: 250px;
+        border-right: 1px solid $divider-color;
+        margin-top: 64px;
+        position: fixed !important;
+        top: 0;
+        left: 0;
+    }
+
+    .container{
+        max-width: 800px;
+        margin: auto;
+        padding: 16px;
+    }
+    
+    .footer{
+        padding: 16px;
+        text-align: center;
+    }
 }
 
-.container{
-    max-width: 800px;
-    margin: auto;
-    padding: 16px;
-}
-
-.footer{
-    padding: 16px;
-    text-align: center;
-}
 
 
 // MEDIA QUERIES
@@ -46,6 +56,13 @@ html, body{
 @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
 @media (min-width:1281px) { /* hi-res laptops and desktops */ }
 
+
+@media (max-width: 600px){
+    mat-sidenav-container,
+    mat-sidenav {
+        margin-top: 56px !important;
+    }
+}
 @media (max-width: 800px){
     .container{
         padding: 0px 0px 16px;

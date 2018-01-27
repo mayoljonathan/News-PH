@@ -10,7 +10,21 @@ import { News } from '../../shared/interfaces';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
+
+  menuOpen: boolean = false;
+  isLoading: boolean = false;
+
+  categories = [
+    {name: 'general'},
+    {name: 'business'},
+    {name: 'entertainment'},
+    {name: 'health'},
+    {name: 'science'},
+    {name: 'sports'},
+    {name: 'technology'},
+  ];
+
+  selectedCategory: string = 'general';
   newsList: Array<News> = [];
 
   constructor(
@@ -18,18 +32,24 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getNews();
+    this.getNews(this.selectedCategory);
   }
 
-  getNews(){
-    this.newsService.getNews().then(response=>{
+  getNews(category: string){
+    this.isLoading = true;
+    // When clicking sidenav category, change selectedCategory to the clicked category
+    if(category != this.selectedCategory) { 
+      this.selectedCategory = category;
+      this.menuOpen = false;
+    }
+
+    this.newsService.getNews(category).then(response=>{
+      this.isLoading = false;
       this.newsList = response.articles;
+    },error=>{
+      alert(error);
+      this.isLoading = false;
     });
-  }
-
-  refresh(){
-    this.newsList = [];
-    this.getNews();
   }
 
 }
